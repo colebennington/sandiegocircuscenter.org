@@ -171,3 +171,4 @@ public/
 4. **Parent Photos**: Only use with written permission
 5. **File Optimization**: Compress images for web (use tools like TinyPNG)
 6. **Backup Plan**: Keep the Unsplash URLs as fallbacks during development
+

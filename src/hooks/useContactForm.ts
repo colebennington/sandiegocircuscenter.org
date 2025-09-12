@@ -2,6 +2,17 @@
 
 import { useState } from 'react';
 
+// Extend window interface for gtag
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      action: string,
+      parameters?: Record<string, string | number>
+    ) => void;
+  }
+}
+
 interface FormData {
   fullName: string;
   phone: string;
@@ -102,8 +113,8 @@ export function useContactForm(): UseContactFormReturn {
       });
 
       // Track conversion event for analytics
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'form_submit', {
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'form_submit', {
           event_category: 'engagement',
           event_label: 'contact_form',
           value: 1
@@ -139,3 +150,4 @@ export function useContactForm(): UseContactFormReturn {
     resetForm,
   };
 }
+

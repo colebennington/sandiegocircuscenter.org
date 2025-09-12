@@ -26,7 +26,7 @@ export function ContactForm() {
             Thank You!
           </h3>
           <p className="text-gray-700 mb-6 leading-relaxed">
-            We've received your inquiry and will get back to you within 24 hours with information about our youth circus classes.
+            We&apos;ve received your inquiry and will get back to you within 24 hours with information about our youth circus classes.
           </p>
           <p className="text-sm text-gray-600 mb-6">
             Check your email for a confirmation message with next steps.
@@ -124,3 +124,4 @@ export function ContactForm() {
     </div>
   );
 }
+

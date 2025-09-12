@@ -99,3 +99,4 @@ If you can't get all images immediately:
 - Check `image-replacement-guide.md` for exact code replacements
 - Use browser dev tools to see which images are missing
 - Test one image at a time to isolate issues
+

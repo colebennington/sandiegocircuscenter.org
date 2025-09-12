@@ -138,3 +138,4 @@ If you need help:
 2. Review CloudWatch logs
 3. Test with AWS CLI: `aws ses send-email`
 4. Contact AWS support if needed
+

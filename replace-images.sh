@@ -60,3 +60,4 @@ echo "  - coach-marysue.jpg (400×400px)"
 echo "  - coach-mara.jpg (400×400px)"
 echo "  - coach-lauren.jpg (400×400px)"
 echo "  - coach-jon.jpg (400×400px)"
+
