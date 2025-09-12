@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Youth Circus Landing Page
 
-## Getting Started
+A modern, mobile-responsive landing page for San Diego Circus Center's youth circus classes ad campaign.
 
-First, run the development server:
+## Features
+
+- **Mobile-First Design**: Fully responsive with TailwindCSS
+- **Conversion Optimized**: Lead capture forms and clear CTAs
+- **Social Proof**: Customer testimonials and 5-star ratings
+- **Fast Loading**: Static Next.js optimization
+- **SEO Optimized**: Meta tags and semantic HTML
+
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` to view the landing page.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Vercel (Recommended)
 
-## Learn More
+1. Connect your GitHub repository to Vercel
+2. Deploy automatically with custom domain setup
+3. Configure your subdomain (e.g., youth.sandiegocircuscenter.org)
 
-To learn more about Next.js, take a look at the following resources:
+### Alternative Deployment Options
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Netlify**: Drag and drop `.next` folder after `npm run build`
+- **GitHub Pages**: Use `npm run export` for static files
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Customization
 
-## Deploy on Vercel
+- Replace placeholder images in the code with actual photos
+- Update contact form to connect to your preferred form handler
+- Add Google Analytics tracking code
+- Customize colors and branding in Tailwind classes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## File Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/page.tsx` - Main landing page component
+- `src/app/layout.tsx` - HTML layout and metadata
+- `tailwind.config.ts` - Tailwind CSS configuration
+
+## Performance
+
+- Optimized for Core Web Vitals
+- Uses Next.js Image optimization
+- Minimal JavaScript bundle
+- Fast loading times on mobile networks
