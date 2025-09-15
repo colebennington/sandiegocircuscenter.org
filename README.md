@@ -19,6 +19,41 @@ npm run dev
 
 Visit `http://localhost:3000` to view the landing page.
 
+## Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+# Google Tag Manager ID (format: GTM-XXXXXXX) - Optional if using GA directly
+NEXT_PUBLIC_GTM_ID=your_gtm_id_here
+
+# Google Analytics ID (format: G-XXXXXXXXXX) - Use this for direct GA implementation
+NEXT_PUBLIC_GA_ID=G-DYHGK3JECC
+
+# Meta Pixel ID (format: numeric ID)
+NEXT_PUBLIC_META_PIXEL_ID=your_meta_pixel_id_here
+```
+
+### How to get your tracking IDs:
+
+**Google Analytics (Direct):**
+1. Go to [Google Analytics](https://analytics.google.com)
+2. Create a new property or use an existing one
+3. Your Measurement ID will be in the format `G-XXXXXXXXXX`
+4. Use this in `NEXT_PUBLIC_GA_ID`
+
+**Google Tag Manager (Alternative):**
+1. Go to [Google Tag Manager](https://tagmanager.google.com)
+2. Create a new container or use an existing one
+3. Your GTM ID will be in the format `GTM-XXXXXXX`
+4. Use this in `NEXT_PUBLIC_GTM_ID` (then configure GA inside GTM)
+
+**Meta Pixel:**
+1. Go to [Facebook Business Manager](https://business.facebook.com)
+2. Navigate to Events Manager
+3. Create a new pixel or use an existing one
+4. Your Pixel ID will be a numeric value (e.g., `1234567890123456`)
+
 ## Deployment
 
 ### Vercel (Recommended)
@@ -36,7 +71,7 @@ Visit `http://localhost:3000` to view the landing page.
 
 - Replace placeholder images in the code with actual photos
 - Update contact form to connect to your preferred form handler
-- Add Google Analytics tracking code
+- Add your Google Tag Manager and Meta Pixel tracking IDs to `.env.local`
 - Customize colors and branding in Tailwind classes
 
 ## File Structure
