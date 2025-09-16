@@ -1,5 +1,6 @@
 import { Star, Phone, Mail, Instagram, Users, Trophy, Heart } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
+import { FooterContactForm } from '@/components/FooterContactForm';
 
 /* eslint-disable react/no-unescaped-entities */
 export default function Home() {
@@ -9,55 +10,60 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-purple-900 to-pink-800 overflow-hidden">
         {/* Background Image Overlay */}
         <div 
-          className="absolute inset-0 bg-cover bg-top bg-no-repeat opacity-40"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50"
           style={{
-            backgroundImage: 'url("/images/hero-background.webp")'
+            backgroundImage: 'url("/images/mobile hero.webp")'
           }}
         />
         
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <div className="max-w-4xl mx-auto">
-            {/* 5-Star Rating */}
-            <div className="flex justify-center items-center gap-1 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-              ))}
-              <span className="ml-2 text-lg font-medium">5-Star Rated</span>
-            </div>
-            
-            {/* Subtitle */}
-            <p className="text-xl md:text-2xl font-medium mb-4 text-blue-200">
-              The leading circus arts training facility in San Diego
-            </p>
-            
-            {/* Main Headline */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Youth Circus Classes,{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-400">
-                Enroll Now!
-              </span>
-            </h1>
-            
-            {/* Key Benefits */}
-            <div className="grid md:grid-cols-3 gap-4 mb-8 text-lg">
-              <div className="flex items-center justify-center gap-2">
-                <Users className="w-5 h-5 text-yellow-400" />
-                <span>Ages 5-17</span>
+        <div className="relative z-10 container mx-auto px-6 sm:px-8 lg:px-4 text-center text-white py-8 sm:py-12 lg:py-16">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+              {/* Left Column - Text Content */}
+              <div className="lg:text-left px-4 sm:px-6 lg:px-0">
+                {/* 5-Star Rating */}
+                <div className="flex justify-center lg:justify-start items-center gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                  ))}
+                  <span className="ml-2 text-lg font-medium">5-Star Rated</span>
+                </div>
+                
+                {/* Subtitle */}
+                <p className="text-lg sm:text-xl md:text-2xl font-medium mb-4 text-blue-200">
+                  The leading circus arts training facility in San Diego
+                </p>
+                
+                {/* Main Headline */}
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                  Youth Circus Classes,{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-400">
+                    Enroll Now!
+                  </span>
+                </h1>
+                
+                {/* Key Benefits */}
+                <div className="grid sm:grid-cols-1 lg:grid-cols-1 gap-3 mb-8 text-sm sm:text-base lg:text-lg">
+                  <div className="flex items-center justify-center lg:justify-start gap-2">
+                    <Users className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                    <span>Ages 5-17</span>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start gap-2">
+                    <Trophy className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                    <span>Aerial, Trampoline, Tumbling & More</span>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start gap-2">
+                    <Heart className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                    <span>Build Confidence & Develop Lifelong Skills</span>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center justify-center gap-2">
-                <Trophy className="w-5 h-5 text-yellow-400" />
-                <span>Aerial, Trampoline, Tumbling & More</span>
+              
+              {/* Right Column - Contact Form */}
+              <div id="contact-form" className="lg:mt-8 px-4 sm:px-6 lg:px-0">
+                <ContactForm />
               </div>
-              <div className="flex items-center justify-center gap-2">
-                <Heart className="w-5 h-5 text-yellow-400" />
-                <span>Build Confidence & Develop Lifelong Skills</span>
-              </div>
-            </div>
-            
-            {/* Contact Form */}
-            <div id="contact-form">
-              <ContactForm />
             </div>
           </div>
         </div>
@@ -108,7 +114,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
@@ -119,76 +125,87 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Testimonial 1 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
+          <div className="grid lg:grid-cols-3 gap-6 max-w-7xl mx-auto items-start">
+            {/* Left Column - Large Family Photo Testimonial 1 */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-fit">
+              <div 
+                className="h-56 bg-cover bg-top"
+                style={{
+                  backgroundImage: 'url("/images/Summer Camp Parent Testimonial.webp")'
+                }}
+              />
+              <div className="p-6">
+                <p className="text-gray-700 mb-4 leading-relaxed">
+                  "A unique place that gets kids moving in exciting ways. My daughters love it—it's fun, safe, and a great alternative to traditional sports."
+                </p>
+                <p className="font-semibold text-gray-800">Katelyn F.</p>
               </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                "San Diego Circus Center has made my daughter stronger and more confident. It's a unique place that builds both physical skills and self-esteem."
-              </p>
-              <div className="flex items-center gap-3">
-                <div 
-                  className="w-12 h-12 rounded-full bg-cover bg-center"
-                  style={{
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80")'
-                  }}
-                />
-                <div>
-                  <p className="font-semibold text-gray-800">Karla M.</p>
-                  <p className="text-gray-600 text-sm">Parent</p>
+            </div>
+
+            {/* Center Column - Two Headshot Testimonials Stacked */}
+            <div className="space-y-6">
+              {/* Karla M Testimonial */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-5 leading-relaxed">
+                  "San Diego Circus Center has made my daughter stronger and more confident. It's a unique place that builds both physical skills and self-esteem."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div 
+                    className="w-12 h-12 rounded-full bg-cover bg-center"
+                    style={{
+                      backgroundImage: 'url("/images/Karla M Pic.webp")'
+                    }}
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-800">Karla M.</p>
+                    <p className="text-gray-600 text-sm">Parent</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Walker Testimonial */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-5 leading-relaxed">
+                  "The first activity my daughter wanted to do! It's a fun, adaptable alternative to gymnastics with silks, tumbling, and more."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div 
+                    className="w-12 h-12 rounded-full bg-cover bg-center"
+                    style={{
+                      backgroundImage: 'url("/images/Walker Headshot.webp")'
+                    }}
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-800">Walker</p>
+                    <p className="text-gray-600 text-sm">Parent</p>
+                  </div>
                 </div>
               </div>
             </div>
-            
-            {/* Testimonial 2 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                "The first activity my daughter wanted to do! It's a fun, adaptable alternative to gymnastics with silks, tumbling, and more."
-              </p>
-              <div className="flex items-center gap-3">
-                <div 
-                  className="w-12 h-12 rounded-full bg-cover bg-center"
-                  style={{
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80")'
-                  }}
-                />
-                <div>
-                  <p className="font-semibold text-gray-800">Walker</p>
-                  <p className="text-gray-600 text-sm">Parent</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Testimonial 3 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                &ldquo;A wonderful, welcoming environment with a true sense of community. The instructors pass on their love for circus, making it great for all ages.&rdquo;
-              </p>
-              <div className="flex items-center gap-3">
-                <div 
-                  className="w-12 h-12 rounded-full bg-cover bg-center"
-                  style={{
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80")'
-                  }}
-                />
-                <div>
-                  <p className="font-semibold text-gray-800">John and Ivy</p>
-                  <p className="text-gray-600 text-sm">Parents</p>
-                </div>
+
+            {/* Right Column - Large Family Photo Testimonial 2 */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-fit">
+              <div 
+                className="h-56 bg-cover bg-top"
+                style={{
+                  backgroundImage: 'url("/images/Summer Camp Parent Testimonial 2.webp")'
+                }}
+              />
+              <div className="p-6">
+                <p className="text-gray-700 mb-4 leading-relaxed">
+                  "A wonderful, welcoming environment with a true sense of community. The instructors pass on their love for circus, making it great for all ages."
+                </p>
+                <p className="font-semibold text-gray-800">John and Ivy</p>
               </div>
             </div>
           </div>
@@ -209,60 +226,64 @@ export default function Home() {
           
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Petite Cirque */}
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
               <div 
                 className="h-64 bg-cover bg-center"
                 style={{
                   backgroundImage: 'url("/images/Petite Cirque.webp")'
                 }}
               />
-              <div className="p-8">
+              <div className="p-8 flex flex-col flex-grow">
                 <h3 className="text-3xl font-bold text-gray-800 mb-4">
                   Petite Cirque (ages 5-7)
                 </h3>
-                <p className="text-gray-700 mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed flex-grow">
                   Our Petite Cirque class introduces young students to a variety of exciting circus skills each week. This action-packed program helps kids build strength, flexibility, balance, and coordination while developing spatial awareness and body confidence. In a supportive and encouraging environment, students learn to try new things, believe in themselves, and—most importantly—have fun!
                 </p>
-                <div className="bg-green-100 text-green-800 px-4 py-2 rounded-lg mb-6 text-center font-semibold">
-                  No Experience Required!
+                <div className="mt-auto">
+                  <div className="bg-green-100 text-green-800 px-4 py-2 rounded-lg mb-6 text-center font-semibold">
+                    No Experience Required!
+                  </div>
+                  <a 
+                    href="https://goteamup.com/p/39027-san-diego-circus-center/c/schedule?view=week&offering_types=256879"
+              target="_blank"
+              rel="noopener noreferrer"
+                    className="inline-block w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-4 px-6 rounded-lg text-lg hover:from-yellow-500 hover:to-orange-600 transform hover:scale-105 transition-all duration-200 text-center"
+            >
+                    Enroll Now
+            </a>
                 </div>
-                <a 
-                  href="https://goteamup.com/p/39027-san-diego-circus-center/c/schedule?view=week&offering_types=256879"
-            target="_blank"
-            rel="noopener noreferrer"
-                  className="inline-block w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-4 px-6 rounded-lg text-lg hover:from-yellow-500 hover:to-orange-600 transform hover:scale-105 transition-all duration-200 text-center"
-          >
-                  Enroll Now
-          </a>
         </div>
             </div>
             
             {/* Youth Cirque */}
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
               <div 
                 className="h-64 bg-cover bg-center"
                 style={{
                   backgroundImage: 'url("/images/Youth Cirque.webp")'
                 }}
               />
-              <div className="p-8">
+              <div className="p-8 flex flex-col flex-grow">
                 <h3 className="text-3xl font-bold text-gray-800 mb-4">
                   Youth Cirque (ages 8-17)
                 </h3>
-                <p className="text-gray-700 mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed flex-grow">
                   Youth Cirque introduces students to a wide range of circus skills each week, including both ground and aerial disciplines. This high-energy class builds strength, flexibility, balance, coordination, and body awareness, helping students gain confidence and control. Designed to nurture self-esteem, creative thinking, and teamwork, our supportive environment encourages students to challenge themselves, express their talents, and have fun—both on the ground and in the air.
                 </p>
-                <div className="bg-green-100 text-green-800 px-4 py-2 rounded-lg mb-6 text-center font-semibold">
-                  No Experience Required!
+                <div className="mt-auto">
+                  <div className="bg-green-100 text-green-800 px-4 py-2 rounded-lg mb-6 text-center font-semibold">
+                    No Experience Required!
+                  </div>
+                  <a 
+                    href="https://goteamup.com/p/39027-san-diego-circus-center/c/schedule?view=week&offering_types=1931,256880,111682"
+            target="_blank"
+            rel="noopener noreferrer"
+                    className="inline-block w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-4 px-6 rounded-lg text-lg hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-200 text-center"
+                  >
+                    Enroll Now
+                  </a>
                 </div>
-                <a 
-                  href="https://goteamup.com/p/39027-san-diego-circus-center/c/schedule?view=week&offering_types=1931,256880,111682"
-          target="_blank"
-          rel="noopener noreferrer"
-                  className="inline-block w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-4 px-6 rounded-lg text-lg hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-200 text-center"
-                >
-                  Enroll Now
-                </a>
               </div>
             </div>
           </div>
@@ -362,69 +383,61 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
+      <footer className="bg-gray-900 text-white py-8 h-[33vh] flex flex-col">
+        <div className="container mx-auto px-4 flex-grow">
+          <div className="grid md:grid-cols-2 gap-8 h-full">
             {/* Contact Form */}
-            <div>
-              <h3 className="text-3xl font-bold mb-6">Drop Us a Line</h3>
-              <p className="text-gray-300 mb-6">
-                We are always looking for a next great project
+            <div className="flex flex-col justify-center">
+              <h3 className="text-xl font-bold mb-3">Get More Information</h3>
+              <p className="text-gray-300 mb-4 text-sm">
+                Ready to start your circus journey? Send us a message.
               </p>
-              <form className="space-y-4">
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                />
-                <textarea
-                  placeholder="Message"
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                />
-                <input
-                  type="text"
-                  placeholder="Full Name"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                />
-                <button
-                  type="submit"
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200"
-                >
-                  Submit
-                </button>
-              </form>
+              <FooterContactForm />
             </div>
             
             {/* Contact Info */}
-            <div>
-              <h3 className="text-3xl font-bold mb-6">Get in Touch</h3>
-              <p className="text-gray-300 mb-6">
-                We appreciate each customer and we are proud that 60% of clients come back to work with us again.
+            <div className="flex flex-col justify-center">
+              <h3 className="text-xl font-bold mb-3">Get in Touch</h3>
+              <p className="text-gray-300 mb-4 text-sm">
+                Contact us to learn more about our youth circus programs.
               </p>
               
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-purple-400" />
-                  <span>+1 (619) 487-1239</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-purple-400" />
+              <div className="space-y-3 mb-6">
+                <a 
+                  href="tel:+16194871239"
+                  className="flex items-center gap-2 hover:text-purple-300 transition-colors text-sm"
+                >
+                  <Phone className="w-4 h-4 text-purple-400" />
+                  <span>(619) 487-1239</span>
+                </a>
+                <a 
+                  href="mailto:info@sandiegocircuscenter.org"
+                  className="flex items-center gap-2 hover:text-purple-300 transition-colors text-sm"
+                >
+                  <Mail className="w-4 h-4 text-purple-400" />
                   <span>info@sandiegocircuscenter.org</span>
-                </div>
+                </a>
               </div>
               
               <div>
-                <p className="text-gray-300 mb-4">We are on Socials</p>
-                <div className="flex items-center gap-4">
-                  <Instagram className="w-8 h-8 text-purple-400 hover:text-purple-300 cursor-pointer transition-colors" />
-                </div>
+                <p className="text-gray-300 mb-2 text-sm">Follow Us</p>
+                <a
+                  href="https://instagram.com/sdcircuscenter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
+                >
+                  <Instagram className="w-5 h-5" />
+                  <span className="text-sm">@sdcircuscenter</span>
+                </a>
               </div>
             </div>
           </div>
-          
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-            <p className="text-gray-400">
+        </div>
+        
+        <div className="border-t border-gray-800 pt-4 mt-auto">
+          <div className="container mx-auto px-4">
+            <p className="text-gray-400 text-center text-xs">
               © 2025 San Diego Circus Center. All rights reserved.
             </p>
           </div>
