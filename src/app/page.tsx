@@ -48,16 +48,17 @@ export default function Home() {
                 </div>
 
                 {/* Main Headline */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight text-white drop-shadow-lg">
-                  Youth Circus Classes,{" "}
-                  <span className="text-yellow-300 drop-shadow-lg">
-                    Enroll Now!
+                <h1 className="text-3xl lg:text-5xl font-semibold mb-6 leading-tight text-white drop-shadow-lg">
+                  Youth Circus Classes{" "}
+                  <span className="text-yellow-300 drop-shadow-sm">
+                    Enrolling Now!
                   </span>
                 </h1>
 
                 {/* Subtitle */}
-                <p className="text-lg sm:text-xl md:text-2xl font-medium mb-4 text-white drop-shadow-lg">
-                  The leading circus arts training facility in San Diego
+                <p className="text-lg sm:text-xl md:text-2xl font-medium mb-4 text-white drop-shadow-sm">
+                  Come learn at the leading circus arts training facility in San
+                  Diego
                 </p>
 
                 {/* Key Benefits */}
@@ -65,7 +66,7 @@ export default function Home() {
                   <div className="flex items-center justify-center lg:justify-start gap-2">
                     <Users className="w-5 h-5 text-yellow-300 flex-shrink-0 drop-shadow-md" />
                     <span className="text-white font-medium drop-shadow-md">
-                      Ages 5-17 No Experience Required
+                      Ages 5-17. No Experience Required
                     </span>
                   </div>
                   <div className="flex items-center justify-center lg:justify-start gap-2">
