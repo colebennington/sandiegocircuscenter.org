@@ -1,79 +1,85 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { User, Phone, Mail, Users } from 'lucide-react'
+import { useState } from "react";
+import { User, Phone, Mail, Users } from "lucide-react";
 
 interface FooterContactFormData {
-  fullName: string
-  phone: string
-  email: string
-  childAge: string
+  fullName: string;
+  phone: string;
+  email: string;
+  childAge: string;
 }
 
 export function FooterContactForm() {
   const [formData, setFormData] = useState<FooterContactFormData>({
-    fullName: '',
-    phone: '',
-    email: '',
-    childAge: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [message, setMessage] = useState('')
-  const [isSuccess, setIsSuccess] = useState(false)
+    fullName: "",
+    phone: "",
+    email: "",
+    childAge: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setMessage('')
+    e.preventDefault();
+    setIsSubmitting(true);
+    setMessage("");
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
 
       if (response.ok) {
-        setIsSuccess(true)
-        setMessage('Form submitted successfully! Check your email for confirmation.')
+        setIsSuccess(true);
+        setMessage(
+          "Form submitted successfully! Check your email for confirmation."
+        );
         setFormData({
-          fullName: '',
-          phone: '',
-          email: '',
-          childAge: ''
-        })
+          fullName: "",
+          phone: "",
+          email: "",
+          childAge: "",
+        });
       } else {
-        setIsSuccess(false)
-        setMessage(result.error || 'Something went wrong. Please try again.')
+        setIsSuccess(false);
+        setMessage(result.error || "Something went wrong. Please try again.");
       }
     } catch {
-      setIsSuccess(false)
-      setMessage('Network error. Please check your connection and try again.')
+      setIsSuccess(false);
+      setMessage("Network error. Please check your connection and try again.");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div>
       {message && (
-        <div className={`mb-3 p-2 rounded-lg text-xs ${
-          isSuccess 
-            ? 'bg-green-50 border border-green-200 text-green-800' 
-            : 'bg-red-50 border border-red-200 text-red-800'
-        }`}>
+        <div
+          className={`mb-3 p-2 rounded-lg text-xs ${
+            isSuccess
+              ? "bg-green-50 border border-green-200 text-green-800"
+              : "bg-red-50 border border-red-200 text-red-800"
+          }`}
+        >
           {message}
         </div>
       )}
@@ -105,7 +111,7 @@ export function FooterContactForm() {
             />
           </div>
         </div>
-        
+
         <div className="relative">
           <Mail className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400 w-3 h-3" />
           <input
@@ -129,9 +135,15 @@ export function FooterContactForm() {
             className="w-full pl-7 pr-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none"
           >
             <option value="">Select age group</option>
-            <option value="Ages 5-7 (Petite Cirque)">Ages 5-7 (Petite Cirque)</option>
-            <option value="Ages 8-12 (Youth Cirque)">Ages 8-12 (Youth Cirque)</option>
-            <option value="Ages 13-17 (Teen Cirque)">Ages 13-17 (Teen Cirque)</option>
+            <option value="Ages 5-7 (Petite Cirque)">
+              Ages 5-7 (Petite Cirque)
+            </option>
+            <option value="Ages 8-12 (Youth Cirque)">
+              Ages 8-12 (Youth Cirque)
+            </option>
+            <option value="Ages 13-17 (Teen Cirque)">
+              Ages 13-17 (Teen Cirque)
+            </option>
             <option value="Mixed Ages">Mixed Ages</option>
           </select>
         </div>
@@ -139,11 +151,16 @@ export function FooterContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold py-2 px-4 rounded-lg text-sm hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+          className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg text-sm hover:from-blue-700 hover:to-blue-600 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+          style={{
+            background: isSubmitting
+              ? undefined
+              : "linear-gradient(135deg, #0249AC 0%, #0260D9 50%, #0377FF 100%)",
+          }}
         >
-          {isSubmitting ? 'Sending...' : 'Get Class Information'}
+          {isSubmitting ? "Sending..." : "Get Class Information"}
         </button>
       </form>
     </div>
-  )
+  );
 }
