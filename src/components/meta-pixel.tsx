@@ -1,21 +1,13 @@
-'use client'
+"use client";
 
-import { useEffect } from 'react'
-import Script from 'next/script'
+import { useEffect } from "react";
+import Script from "next/script";
 
 interface MetaPixelProps {
-  pixelId: string
+  pixelId: string;
 }
 
 export function MetaPixel({ pixelId }: MetaPixelProps) {
-  useEffect(() => {
-    // Initialize Facebook Pixel
-    if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq('init', pixelId)
-      window.fbq('track', 'PageView')
-    }
-  }, [pixelId])
-
   return (
     <Script
       id="meta-pixel"
@@ -35,12 +27,17 @@ export function MetaPixel({ pixelId }: MetaPixelProps) {
         `,
       }}
     />
-  )
+  );
 }
 
 // Extend Window interface for TypeScript
 declare global {
   interface Window {
-    fbq: (action: string, ...args: unknown[]) => void
+    fbq: (
+      action: string,
+      eventName?: string,
+      parameters?: Record<string, any>
+    ) => void;
+    _fbq: any;
   }
 }

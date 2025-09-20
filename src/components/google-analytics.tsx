@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import Script from 'next/script'
+import Script from "next/script";
 
 interface GoogleAnalyticsProps {
-  gaId: string
+  gaId: string;
 }
 
 export function GoogleAnalytics({ gaId }: GoogleAnalyticsProps) {
@@ -28,13 +28,17 @@ export function GoogleAnalytics({ gaId }: GoogleAnalyticsProps) {
         }}
       />
     </>
-  )
+  );
 }
 
 // Extend Window interface for TypeScript
 declare global {
   interface Window {
-    dataLayer: unknown[]
-    gtag: (command: string, ...args: unknown[]) => void
+    dataLayer: unknown[];
+    gtag: (
+      command: string,
+      targetId?: string,
+      config?: Record<string, any>
+    ) => void;
   }
 }

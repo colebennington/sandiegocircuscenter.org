@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Phone, Mail, User, Users } from "lucide-react";
+import { trackFormSubmission, trackConversion } from "@/utils/tracking";
 
 interface ContactFormData {
   fullName: string;
@@ -40,6 +41,9 @@ export function ContactForm() {
     setIsSubmitting(true);
     setMessage("");
 
+    // Track form submission attempt
+    trackFormSubmission("hero", formData);
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -54,6 +58,10 @@ export function ContactForm() {
       if (response.ok) {
         setIsSuccess(true);
         setMessage(result.message);
+
+        // Track successful conversion
+        trackConversion("lead", 50);
+
         setFormData({
           fullName: "",
           phone: "",
