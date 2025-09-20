@@ -10,6 +10,10 @@ import {
 import { ContactForm } from "@/components/ContactForm";
 import { FooterContactForm } from "@/components/FooterContactForm";
 import { Header } from "@/components/Header";
+import { TrackedButton } from "@/components/TrackedButton";
+import { TrackedContactLink } from "@/components/TrackedContactLink";
+import { TrackedSocialLink } from "@/components/TrackedSocialLink";
+import { TrackedIframe } from "@/components/TrackedIframe";
 
 /* eslint-disable react/no-unescaped-entities */
 export default function Home() {
@@ -39,24 +43,22 @@ export default function Home() {
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-6 h-6 fill-yellow-300 text-yellow-300"
+                      className="w-4 h-4 fill-yellow-300 text-yellow-300"
                     />
                   ))}
-                  <span className="ml-2 text-lg font-medium text-white drop-shadow-lg">
+                  <span className="ml-2 text-base font-medium text-white">
                     Trusted by 10,000+ Families
                   </span>
                 </div>
 
                 {/* Main Headline */}
-                <h1 className="text-3xl lg:text-5xl font-semibold mb-6 leading-tight text-white drop-shadow-lg">
+                <h1 className="text-3xl lg:text-5xl font-semibold mb-6 leading-tight text-white ">
                   Youth Circus Classes{" "}
-                  <span className="text-yellow-300 drop-shadow-sm">
-                    Enrolling Now!
-                  </span>
+                  <span className="text-yellow-300">Enrolling Now!</span>
                 </h1>
 
                 {/* Subtitle */}
-                <p className="text-lg sm:text-xl md:text-2xl font-medium mb-4 text-white drop-shadow-sm">
+                <p className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 text-white">
                   Come learn at the leading circus arts training facility in San
                   Diego
                 </p>
@@ -64,19 +66,19 @@ export default function Home() {
                 {/* Key Benefits */}
                 <div className="grid sm:grid-cols-1 lg:grid-cols-1 gap-3 mb-8 text-sm sm:text-base lg:text-lg">
                   <div className="flex items-center justify-center lg:justify-start gap-2">
-                    <Users className="w-5 h-5 text-yellow-300 flex-shrink-0 drop-shadow-md" />
+                    <Users className="w-5 h-5 text-yellow-300 flex-shrink-0" />
                     <span className="text-white font-medium drop-shadow-md">
                       Ages 5-17. No Experience Required
                     </span>
                   </div>
                   <div className="flex items-center justify-center lg:justify-start gap-2">
-                    <Trophy className="w-5 h-5 text-yellow-300 flex-shrink-0 drop-shadow-md" />
+                    <Trophy className="w-5 h-5 text-yellow-300 flex-shrink-0" />
                     <span className="text-white font-medium drop-shadow-md">
                       Aerial, Trampoline, Tumbling & More
                     </span>
                   </div>
                   <div className="flex items-center justify-center lg:justify-start gap-2">
-                    <Heart className="w-5 h-5 text-yellow-300 flex-shrink-0 drop-shadow-md" />
+                    <Heart className="w-5 h-5 text-yellow-300 flex-shrink-0" />
                     <span className="text-white font-medium drop-shadow-md">
                       Build Confidence & Develop Lifelong Skills
                     </span>
@@ -132,8 +134,12 @@ export default function Home() {
                 arts. Our experienced instructors will guide your child through
                 a safe and fun introduction to aerial arts, tumbling, and more.
               </p>
-              <a
+              <TrackedButton
                 href="#enrolling-classes"
+                trackingData={{
+                  buttonType: "see_enrolling_classes",
+                  buttonLocation: "hero_section",
+                }}
                 className="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold py-4 px-8 rounded-lg text-xl hover:from-blue-700 hover:to-blue-600 transform hover:scale-105 transition-all duration-200 shadow-lg"
                 style={{
                   background:
@@ -141,7 +147,7 @@ export default function Home() {
                 }}
               >
                 See Enrolling Classes
-              </a>
+              </TrackedButton>
             </div>
           </div>
         </div>
@@ -321,10 +327,14 @@ export default function Home() {
                   and—most importantly—have fun!
                 </p>
                 <div className="mt-auto">
-                  <a
+                  <TrackedButton
                     href="https://goteamup.com/p/39027-san-diego-circus-center/c/schedule?view=week&offering_types=256879"
                     target="_blank"
                     rel="noopener noreferrer"
+                    trackingData={{
+                      buttonType: "enroll_petite_cirque",
+                      buttonLocation: "class_cards",
+                    }}
                     className="inline-block w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold py-4 px-6 rounded-lg text-lg hover:from-blue-700 hover:to-blue-600 transform hover:scale-105 transition-all duration-200 text-center"
                     style={{
                       background:
@@ -332,7 +342,7 @@ export default function Home() {
                     }}
                   >
                     Enroll Now
-                  </a>
+                  </TrackedButton>
                 </div>
               </div>
             </div>
@@ -366,10 +376,14 @@ export default function Home() {
                   ground and in the air.
                 </p>
                 <div className="mt-auto">
-                  <a
+                  <TrackedButton
                     href="https://goteamup.com/p/39027-san-diego-circus-center/c/schedule?view=week&offering_types=1931,256880,111682"
                     target="_blank"
                     rel="noopener noreferrer"
+                    trackingData={{
+                      buttonType: "enroll_youth_cirque",
+                      buttonLocation: "class_cards",
+                    }}
                     className="inline-block w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold py-4 px-6 rounded-lg text-lg hover:from-blue-700 hover:to-blue-600 transform hover:scale-105 transition-all duration-200 text-center"
                     style={{
                       background:
@@ -377,7 +391,7 @@ export default function Home() {
                     }}
                   >
                     Enroll Now
-                  </a>
+                  </TrackedButton>
                 </div>
               </div>
             </div>
@@ -401,7 +415,7 @@ export default function Home() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-xl">
               {/* TeamUp Schedule Widget */}
               <div className="w-full">
-                <iframe
+                <TrackedIframe
                   src="https://goteamup.com/p/39027-san-diego-circus-center/c/schedule?offering_types=1931,256879,256880,111682&embed=1&hide_nav=1"
                   width="100%"
                   height="700px"
@@ -414,6 +428,7 @@ export default function Home() {
                   }}
                   allow="fullscreen"
                   title="San Diego Circus Center Schedule"
+                  trackingSource="full_schedule_section"
                 />
               </div>
             </div>
@@ -424,8 +439,12 @@ export default function Home() {
                 Questions about classes? Ready to get started?
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
+                <TrackedButton
                   href="#contact-form"
+                  trackingData={{
+                    buttonType: "contact_us",
+                    buttonLocation: "schedule_section",
+                  }}
                   className="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold py-3 px-6 rounded-lg text-lg hover:from-blue-700 hover:to-blue-600 transform hover:scale-105 transition-all duration-200"
                   style={{
                     background:
@@ -433,13 +452,15 @@ export default function Home() {
                   }}
                 >
                   Contact Us
-                </a>
-                <a
+                </TrackedButton>
+                <TrackedContactLink
                   href="tel:+16194871239"
+                  type="phone"
+                  location="schedule_section"
                   className="bg-transparent border-2 border-white text-white font-semibold py-3 px-6 rounded-lg text-lg hover:bg-white hover:text-gray-900 transition-all duration-200"
                 >
                   Call (619) 487-1239
-                </a>
+                </TrackedContactLink>
               </div>
             </div>
           </div>
@@ -517,35 +538,40 @@ export default function Home() {
               </p>
 
               <div className="space-y-4 mb-8">
-                <a
+                <TrackedContactLink
                   href="tel:+16194871239"
+                  type="phone"
+                  location="footer"
                   className="flex items-center gap-3 hover:text-purple-300 transition-colors text-base md:text-lg"
                 >
                   <Phone className="w-5 h-5 text-purple-400 flex-shrink-0" />
                   <span>(619) 487-1239</span>
-                </a>
-                <a
+                </TrackedContactLink>
+                <TrackedContactLink
                   href="mailto:info@sandiegocircuscenter.org"
+                  type="email"
+                  location="footer"
                   className="flex items-center gap-3 hover:text-purple-300 transition-colors text-base md:text-lg"
                 >
                   <Mail className="w-5 h-5 text-purple-400 flex-shrink-0" />
                   <span>info@sandiegocircuscenter.org</span>
-                </a>
+                </TrackedContactLink>
               </div>
 
               <div>
                 <p className="text-gray-300 mb-3 text-base md:text-lg">
                   Follow Us
                 </p>
-                <a
+                <TrackedSocialLink
                   href="https://instagram.com/sdcircuscenter"
                   target="_blank"
                   rel="noopener noreferrer"
+                  platform="instagram"
                   className="flex items-center gap-3 text-purple-400 hover:text-purple-300 transition-colors"
                 >
                   <Instagram className="w-6 h-6" />
                   <span className="text-base md:text-lg">@sdcircuscenter</span>
-                </a>
+                </TrackedSocialLink>
               </div>
             </div>
           </div>
