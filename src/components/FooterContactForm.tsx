@@ -9,6 +9,7 @@ interface FooterContactFormData {
   phone: string;
   email: string;
   childAge: string;
+  additionalQuestions: string;
 }
 
 export function FooterContactForm() {
@@ -17,13 +18,16 @@ export function FooterContactForm() {
     phone: "",
     email: "",
     childAge: "",
+    additionalQuestions: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -65,6 +69,7 @@ export function FooterContactForm() {
           phone: "",
           email: "",
           childAge: "",
+          additionalQuestions: "",
         });
       } else {
         setIsSuccess(false);
@@ -154,6 +159,17 @@ export function FooterContactForm() {
             </option>
             <option value="Mixed Ages">Mixed Ages</option>
           </select>
+        </div>
+
+        <div>
+          <textarea
+            name="additionalQuestions"
+            value={formData.additionalQuestions}
+            onChange={handleInputChange}
+            rows={2}
+            placeholder="Additional questions or comments..."
+            className="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent placeholder-gray-400 resize-vertical"
+          />
         </div>
 
         <button

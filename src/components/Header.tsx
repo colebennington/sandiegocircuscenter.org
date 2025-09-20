@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
-import Image from "next/image";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +30,7 @@ export function Header() {
             aria-label="San Diego Circus Center home"
             className="flex-shrink-0"
           >
-            <Image
+            <img
               src="https://cdn.prod.website-files.com/64e528a2a1e0067f4d14db9e/64e53afcacbabb62a1474a5c_SDCC-Solid-Tent_black-03.png"
               alt="San Diego Circus Center"
               width={108}

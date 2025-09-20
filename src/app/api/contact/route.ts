@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import { NextRequest, NextResponse } from "next/server";
+import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 
 // Configure AWS SES client
 const sesClient = new SESClient({
-  region: process.env.AWS_REGION || 'us-east-1',
+  region: process.env.AWS_REGION || "us-east-1",
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
@@ -13,12 +13,12 @@ const sesClient = new SESClient({
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { fullName, phone, email, childAge } = body;
+    const { fullName, phone, email, childAge, additionalQuestions } = body;
 
     // Validation
     if (!fullName || !phone || !email || !childAge) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: "All fields are required" },
         { status: 400 }
       );
     }
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json(
-        { error: 'Invalid email address' },
+        { error: "Invalid email address" },
         { status: 400 }
       );
     }
@@ -40,7 +40,11 @@ Contact Information:
 - Name: ${fullName}
 - Phone: ${phone}
 - Email: ${email}
-- Child Age Group: ${childAge}
+- Child Age Group: ${childAge}${
+      additionalQuestions
+        ? `\n- Additional Questions: ${additionalQuestions}`
+        : ""
+    }
 
 Submitted from: Youth Circus Landing Page
 Time: ${new Date().toLocaleString()}
@@ -56,7 +60,11 @@ Please follow up with this inquiry within 24 hours for best conversion rates.
   <li><strong>Name:</strong> ${fullName}</li>
   <li><strong>Phone:</strong> ${phone}</li>
   <li><strong>Email:</strong> ${email}</li>
-  <li><strong>Child Age Group:</strong> ${childAge}</li>
+  <li><strong>Child Age Group:</strong> ${childAge}</li>${
+      additionalQuestions
+        ? `\n  <li><strong>Additional Questions:</strong> ${additionalQuestions}</li>`
+        : ""
+    }
 </ul>
 
 <p><strong>Submitted from:</strong> Youth Circus Landing Page<br>
@@ -76,16 +84,16 @@ Please follow up with this inquiry within 24 hours for best conversion rates.
       Message: {
         Subject: {
           Data: `New Youth Circus Inquiry - ${fullName}`,
-          Charset: 'UTF-8',
+          Charset: "UTF-8",
         },
         Body: {
           Text: {
             Data: emailContent,
-            Charset: 'UTF-8',
+            Charset: "UTF-8",
           },
           Html: {
             Data: htmlContent,
-            Charset: 'UTF-8',
+            Charset: "UTF-8",
           },
         },
       },
@@ -162,17 +170,17 @@ For immediate assistance, call <a href="tel:+16194871239">(619) 487-1239</a>.</s
       },
       Message: {
         Subject: {
-          Data: 'Thank you for your interest in Youth Circus Classes!',
-          Charset: 'UTF-8',
+          Data: "Thank you for your interest in Youth Circus Classes!",
+          Charset: "UTF-8",
         },
         Body: {
           Text: {
             Data: autoReplyContent,
-            Charset: 'UTF-8',
+            Charset: "UTF-8",
           },
           Html: {
             Data: autoReplyHtml,
-            Charset: 'UTF-8',
+            Charset: "UTF-8",
           },
         },
       },
@@ -181,17 +189,17 @@ For immediate assistance, call <a href="tel:+16194871239">(619) 487-1239</a>.</s
     await sesClient.send(autoReplyCommand);
 
     return NextResponse.json(
-      { message: 'Form submitted successfully! Check your email for confirmation.' },
+      {
+        message:
+          "Form submitted successfully! Check your email for confirmation.",
+      },
       { status: 200 }
     );
-
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error("Error sending email:", error);
     return NextResponse.json(
-      { error: 'Failed to send email. Please try again or call us directly.' },
+      { error: "Failed to send email. Please try again or call us directly." },
       { status: 500 }
     );
   }
 }
-
-
