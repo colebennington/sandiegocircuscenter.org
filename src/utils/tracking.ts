@@ -18,6 +18,14 @@ export interface LeadEvent {
   currency?: string;
 }
 
+export interface FormData {
+  fullName?: string;
+  phone?: string;
+  email?: string;
+  childAge?: string;
+  additionalQuestions?: string;
+}
+
 // Google Analytics tracking
 export const trackEvent = (event: TrackingEvent) => {
   if (
@@ -40,7 +48,7 @@ export const trackEvent = (event: TrackingEvent) => {
 // Meta Pixel tracking
 export const trackMetaEvent = (
   eventName: string,
-  parameters?: Record<string, any>
+  parameters?: Record<string, unknown>
 ) => {
   if (
     typeof window !== "undefined" &&
@@ -58,7 +66,7 @@ export const trackMetaEvent = (
 // Combined tracking functions for common events
 export const trackFormSubmission = (
   formType: "hero" | "footer",
-  formData?: any
+  formData?: FormData
 ) => {
   // Google Analytics
   trackEvent({

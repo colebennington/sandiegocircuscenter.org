@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import Script from "next/script";
 
 interface MetaPixelProps {
@@ -36,8 +35,8 @@ declare global {
     fbq: (
       action: string,
       eventName?: string,
-      parameters?: Record<string, any>
+      parameters?: Record<string, unknown>
     ) => void;
-    _fbq: any;
+    _fbq: unknown;
   }
 }
